@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import https from 'node:https';
+import path from 'node:path'
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -12,10 +13,11 @@ const isProduction = process.env.NODE_ENV == "production";
 
 const port = 443;
 
-console.log(`getting ssl credentials from ${process.env.SSL_CERT} and ${process.env.SSL_KEY}`);
+const SSL_DIR = "/etc/ssl";
+console.log(`getting ssl credentials from ${SSL_DIR}`);
 const sslOptions = isProduction ? {
-	cert: fs.readFileSync(process.env.SSL_CERT),
-	key: fs.readFileSync(process.env.SSL_KEY),
+	cert: fs.readFileSync(path.join(SSL_DIR, "certs/soaper.dev.pem")),
+	key: fs.readFileSync(path.join(SSL_DIR, "private/soaper.dev.pem")),
 } : {};
 
 const app = express();
