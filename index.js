@@ -28,9 +28,12 @@ app.get("/", (req, res) => {
 	res.end("coming soon!\n");
 });
 
-const server = https.createServer(app, sslOptions).listen(port, () => {
+
+app.listen(port);
+const server = https.createServer(sslOptions, app).listen(port, () => {
 	console.log(`listening on port ${port}`);
 });
+
 
 process.on("beforeExit", () => {
 	server.close();
