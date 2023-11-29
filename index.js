@@ -16,9 +16,13 @@ const sslOptions = {
 const app = express();
 
 
+const PUBLIC = path.join(__dirname, "public");
+
+
+app.use(express.static(__dirname));
+
 app.get("/", (req, res) => {
-	res.writeHead(200);
-	res.end("coming soon!\n");
+	res.sendFile(path.join(PUBLIC, 'home/index.html'));
 });
 
 
@@ -28,6 +32,7 @@ const server = https.createServer(sslOptions, app).listen(port, () => {
 
 
 process.on("beforeExit", () => {
+	console.log("exiting");
 	server.close();
 });
 

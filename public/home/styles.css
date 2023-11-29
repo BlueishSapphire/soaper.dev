@@ -1,0 +1,12 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.ms {
+	font-family: 'Courier New', Courier, monospace;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+}
