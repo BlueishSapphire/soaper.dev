@@ -21,7 +21,7 @@ app.use(express.static(PUBLIC));
 
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(PUBLIC, 'home/index.html'));
+	res.sendFile(path.join(PUBLIC, 'index.html'));
 });
 
 
