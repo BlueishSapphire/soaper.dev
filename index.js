@@ -16,10 +16,9 @@ const sslOptions = {
 const app = express();
 
 
-const PUBLIC = path.join(__dirname, "public");
+const PUBLIC = path.join(process.cwd(), "public");
+app.use(express.static(PUBLIC));
 
-
-app.use(express.static(__dirname));
 
 app.get("/", (req, res) => {
 	res.sendFile(path.join(PUBLIC, 'home/index.html'));
